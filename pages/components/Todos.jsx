@@ -1,45 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Check from '../../public/icon-check.svg';
+import TodoContext from '../context/TodoContext';
 
 const Todos = () => {
-  const todoList = [
-    {
-      id: 1,
-      text: 'Complete online JavaScript course',
-      completed: true,
-    },
-    {
-      id: 2,
-      text: 'Jog around the park 3x',
-      completed: false,
-    },
-    {
-      id: 3,
-      text: '10 minutes meditation',
-      completed: false,
-    },
-    {
-      id: 4,
-      text: 'Read for 1 hour',
-      completed: false,
-    },
-    {
-      id: 5,
-      text: 'Pick up groceries',
-      completed: false,
-    },
-    {
-      id: 6,
-      text: 'Complete Todo App on Frontend Mentor',
-      completed: false,
-    },
-  ];
-  const [todos, setTodos] = useState(todoList);
+  const { todos, changeTodos } = useContext(TodoContext);
+
   const [active, setActive] = useState(true);
   const [completed, setCompleted] = useState(true);
 
-  function handleChange(id) {
-    setTodos(() =>
+  function toggleState(id) {
+    changeTodos(
       todos.map((todo) => {
         if (todo.id === id) {
           todo.completed = !todo.completed;
@@ -48,6 +18,14 @@ const Todos = () => {
         return todo;
       })
     );
+  }
+
+  function deleteTodo(id) {
+    changeTodos(todos.filter((todo) => todo.id !== id));
+  }
+
+  function clearCompleted() {
+    changeTodos(todos.filter((todo) => todo.completed !== true));
   }
 
   return (
@@ -72,7 +50,7 @@ const Todos = () => {
               {todo.completed ? (
                 <label
                   htmlFor='{`todo-${todo.id}`}'
-                  onClick={() => handleChange(todo.id)}
+                  onClick={() => toggleState(todo.id)}
                   className='flex items-center justify-center w-5 h-5 text-gray-100 border border-gray-300 rounded-full cursor-pointer stroke-current stroke-2 dark:border-gray-600 fill-transparent bg-gradient-to-br from-blue-400 to-purple-300'
                 >
                   <Check className='w-3 h-3' />
@@ -80,12 +58,12 @@ const Todos = () => {
               ) : (
                 <label
                   htmlFor='{`todo-${todo.id}`}'
-                  onClick={() => handleChange(todo.id)}
+                  onClick={() => toggleState(todo.id)}
                   className='w-5 h-5 p-1 border border-gray-300 rounded-full cursor-pointer dark:border-gray-600'
                 />
               )}
               <p
-                className={`px-2 ml-2 font-light ${
+                className={`px-2 ml-2 flex-auto font-light ${
                   todo.completed
                     ? 'line-through text-gray-300 dark:text-gray-600'
                     : 'text-gray-600 dark:text-gray-300'
@@ -93,6 +71,14 @@ const Todos = () => {
               >
                 {todo.text}
               </p>
+              <div>
+                <button
+                  onClick={() => deleteTodo(todo.id)}
+                  className='text-xs text-gray-400 dark:text-gray-600 hover:text-blue-500 dark:hover:text-blue-500'
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           );
         })}
@@ -139,7 +125,9 @@ const Todos = () => {
         </div>
         <div>
           <div className='ml-10'>
-            <button>Clear Completed</button>
+            <button onClick={clearCompleted} className='hover:text-blue-500'>
+              Clear Completed
+            </button>
           </div>
         </div>
       </div>

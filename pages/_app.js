@@ -1,10 +1,13 @@
+import { ThemeProvider } from '../pages/context/ThemeContext';
+import { TodoProvider } from '../pages/context/TodoContext';
 import '../styles/globals.css';
-import { ThemeProvider } from '../theme/ThemeContext';
 
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>
-      <Component {...pageProps} />
+      <TodoProvider>
+        <Component {...pageProps} />
+      </TodoProvider>
     </ThemeProvider>
   );
 }

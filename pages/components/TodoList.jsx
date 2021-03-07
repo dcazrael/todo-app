@@ -1,13 +1,27 @@
 import { useContext } from 'react';
 import Moon from '../../public/icon-moon.svg';
 import Sun from '../../public/icon-sun.svg';
-import ThemeContext from '../../theme/ThemeContext';
+import ThemeContext from '../context/ThemeContext';
+import TodoContext from '../context/TodoContext';
 
 const TodoList = () => {
   const { dark, toggleDark } = useContext(ThemeContext);
+  const { todos, addTodos } = useContext(TodoContext);
 
-  function addTodo() {
-    console.log('hello');
+  function addTodo(e) {
+    e.preventDefault();
+
+    let id = 1;
+
+    if (todos) {
+      todos.map((todo) => {
+        if (todo.id >= id) {
+          id = todo.id + 1;
+        }
+      });
+    }
+    addTodos({ id: id, text: e.target[1].value, completed: false });
+    //e.target.reset();
   }
   return (
     <>
@@ -33,16 +47,17 @@ const TodoList = () => {
           className='flex items-center justify-center w-full text-gray-100'
         >
           <button
-            type
-            submit
+            type='submit'
             className='flex items-center justify-center w-5 h-5 text-gray-100 border border-gray-300 rounded-full cursor-pointer stroke-current stroke-2 dark:border-gray-600 fill-transparent hover:bg-gradient-to-br from-blue-400 to-purple-300'
-          />
+          >
+            +
+          </button>
           <input
             type='text'
             name='new_task'
             id='new_task'
             placeholder='Create a new todo...'
-            className='flex-grow p-2 mt-0.5 ml-2 text-gray-400 bg-transparent border-0 appearance-none focus:text-gray-100 focus:outline-none focus:ring focus:ring-offset-gray-500 focus:ring-opacity-30'
+            className='flex-grow p-2 mt-0 ml-2 text-gray-400 bg-transparent border-0 appearance-none no-autofill-bg focus:dark:text-gray-100 focus:outline-none focus:ring focus:ring-opacity-30'
           />
         </form>
       </div>

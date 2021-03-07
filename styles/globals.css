@@ -11,3 +11,16 @@ html {
 .light header {
   background-image: url('../public/bg-desktop-light.jpg');
 }
+
+.dark input.no-autofill-bg:-webkit-autofill {
+  @apply rounded;
+  -webkit-background-clip: text;
+  -webkit-box-shadow: 0 0 0px 1000px hsla(237, 14%, 26%, 0.5) inset !important;
+  -webkit-text-fill-color: hsl(0, 0%, 98%);
+}
+input.no-autofill-bg:-webkit-autofill {
+  @apply rounded;
+  -webkit-background-clip: text;
+  -webkit-box-shadow: 0 0 0px 1000px hsla(233, 11%, 84%, 0.5) inset !important;
+  -webkit-text-fill-color: hsl(234, 11%, 52%);
+}
