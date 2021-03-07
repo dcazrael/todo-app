@@ -46,7 +46,7 @@ class MyDocument extends Document {
             }}
           />
         </Head>
-        <body className='bg-blue-900 bg-no-repeat bg-cover font-josefin'>
+        <body className='bg-gray-200 dark:bg-blue-900 font-josefin'>
           <Main />
           <NextScript />
         </body>

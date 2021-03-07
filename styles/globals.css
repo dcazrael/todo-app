@@ -5,6 +5,9 @@
 html {
   font-size: 18px;
 }
-body {
+.dark header {
   background-image: url('../public/bg-desktop-dark.jpg');
+}
+.light header {
+  background-image: url('../public/bg-desktop-light.jpg');
 }

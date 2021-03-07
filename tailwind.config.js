@@ -6,8 +6,7 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       blue: {
-        200: 'hsl(236, 33%, 92%)',
-        300: 'hsl(234, 39%, 85%)',
+        200: 'hsl(234, 39%, 85%)',
         400: 'hsl(192, 100%, 67%)',
         500: 'hsl(220, 98%, 61%)',
         600: 'hsl(237, 14%, 26%)',
@@ -21,8 +20,8 @@ module.exports = {
         100: 'hsl(0, 0%, 98%)',
         200: 'hsl(236, 33%, 92%)',
         300: 'hsl(233, 11%, 84%)',
-        400: 'hsl(234, 11%, 52%)',
-        500: 'hsl(236, 9%, 61%)',
+        400: 'hsl(236, 9%, 61%)',
+        500: 'hsl(234, 11%, 52%)',
         600: 'hsl(233, 14%, 35%)',
         700: 'hsl(235, 19%, 35%)',
       },
@@ -37,10 +36,19 @@ module.exports = {
       wider: '.05em',
       widest: '.25em',
     },
-    extend: {},
+    extend: {
+      fill: {
+        transparent: 'transparent',
+      },
+      spacing: {
+        100: '30rem',
+      },
+    },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundImage: ['hover', 'focus'],
+    },
   },
   plugins: [],
 };
