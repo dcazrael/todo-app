@@ -48,7 +48,7 @@ const TodoList = () => {
         >
           <button
             type='submit'
-            className='flex items-center justify-center w-5 h-5 text-gray-100 border border-gray-300 rounded-full cursor-pointer stroke-current stroke-2 dark:border-gray-600 fill-transparent hover:bg-gradient-to-br from-blue-400 to-purple-300'
+            className='flex items-center justify-center w-5 h-5 text-gray-400 border border-gray-300 rounded-full cursor-pointer stroke-current stroke-2 dark:border-gray-600 fill-transparent hover:bg-gradient-to-br from-blue-400 to-purple-300'
           >
             +
           </button>
