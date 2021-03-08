@@ -15,7 +15,7 @@ const Todos = () => {
 
   useEffect(() => {
     setContainer(document.querySelector('[data-container]'));
-    setDragElements(document.querySelectorAll('[data-dragItem]'));
+    setDragElements(document.querySelectorAll('[data-draggable]'));
   }, [todos]);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Todos = () => {
 
   useEffect(() => {
     if (container !== undefined) {
-      const notDragging = '[data-dragItem]:not([data-dragging=true]';
+      const notDragging = '[data-draggable]:not([data-dragging=true]';
       container.addEventListener('dragstart', () => {
         const draggedOverElements = container.querySelectorAll(notDragging);
 
@@ -55,7 +55,7 @@ const Todos = () => {
           an infinite loop
         */
         setOrder(() =>
-          [...document.querySelectorAll('[data-dragItem]')].map((element) =>
+          [...document.querySelectorAll('[data-draggable]')].map((element) =>
             parseInt(element.dataset.draggable)
           )
         );
@@ -94,7 +94,7 @@ const Todos = () => {
   function getDragAfterElement(container, yCoord) {
     const draggedOverElements = [
       ...container.querySelectorAll(
-        '[data-dragItem]:not([data-dragging=true])'
+        '[data-draggable]:not([data-dragging=true])'
       ),
     ];
 
@@ -141,7 +141,7 @@ const Todos = () => {
             if (!completed && todo.completed) return;
             return (
               <div
-                data-dragItem={todo.id}
+                data-draggable={todo.id}
                 data-dragging={false}
                 className='flex items-center px-6 py-4 border-b border-gray-200 cursor-move dark:border-blue-600'
                 key={`todo-${todo.id}`}
