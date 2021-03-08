@@ -4,13 +4,13 @@ import Todos from '../components/Todos';
 
 export default function Home() {
   return (
-    <div className=''>
+    <>
       <Head>
         <title>Todo App with Next and TailwindCSS</title>
         <link rel='icon' href='/favicon.png' />
       </Head>
       <header className='px-12 bg-cover w-min md:w-screen'>
-        <div className='container mx-auto w-100 py-14'>
+        <div className='container pt-20 mx-auto w-100 pb-14'>
           <TodoList />
         </div>
       </header>
@@ -42,6 +42,6 @@ export default function Home() {
           </p>
         </div>
       </footer>
-    </div>
+    </>
   );
 }
