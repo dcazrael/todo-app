@@ -11,8 +11,6 @@ const TodoProvider = ({ children }) => {
 
   useEffect(() => {
     const lsTodo = localStorage.getItem('todos');
-
-    console.log(lsTodo);
     if (lsTodo !== null) {
       setTodos(JSON.parse(lsTodo));
     }
