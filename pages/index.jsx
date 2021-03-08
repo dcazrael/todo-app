@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import TodoList from './components/TodoList';
-import Todos from './components/Todos';
+import TodoList from '../components/TodoList';
+import Todos from '../components/Todos';
 
 export default function Home() {
   return (

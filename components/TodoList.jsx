@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import Moon from '../../public/icon-moon.svg';
-import Sun from '../../public/icon-sun.svg';
 import ThemeContext from '../context/ThemeContext';
 import TodoContext from '../context/TodoContext';
+import Moon from '../public/icon-moon.svg';
+import Sun from '../public/icon-sun.svg';
 
 const TodoList = () => {
   const { dark, toggleDark } = useContext(ThemeContext);

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import Check from '../../public/icon-check.svg';
-import Cross from '../../public/icon-cross.svg';
 import TodoContext from '../context/TodoContext';
+import Check from '../public/icon-check.svg';
+import Cross from '../public/icon-cross.svg';
 
 const Todos = () => {
   const { todos, changeTodos } = useContext(TodoContext);
