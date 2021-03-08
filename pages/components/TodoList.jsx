@@ -21,7 +21,7 @@ const TodoList = () => {
       });
     }
     addTodos({ id: id, text: e.target[1].value, completed: false });
-    //e.target.reset();
+    e.target.reset();
   }
   return (
     <>

@@ -9,13 +9,13 @@ export default function Home() {
         <title>Todo App with Next and TailwindCSS</title>
         <link rel='icon' href='/favicon.png' />
       </Head>
-      <header className='bg-no-repeat bg-cover'>
-        <div className='container mx-auto py-14 w-100'>
+      <header className='px-12 bg-cover w-min md:w-screen'>
+        <div className='container mx-auto w-100 py-14'>
           <TodoList />
         </div>
       </header>
 
-      <main className='container mx-auto mt-12'>
+      <main className='container px-12 mx-auto mt-12'>
         <div className='container mx-auto -mt-20 bg-gray-100 rounded dark:bg-blue-800 w-100'>
           <Todos />
         </div>
@@ -25,7 +25,7 @@ export default function Home() {
           </p>
         </div>
       </main>
-      <footer className='container py-8 mx-auto mt-6'>
+      <footer className='container px-12 mx-auto mt-6'>
         <div className='mx-auto text-center text-gray-500 w-100'>
           <p>
             Challenge by{' '}

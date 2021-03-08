@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import Check from '../../public/icon-check.svg';
+import Cross from '../../public/icon-cross.svg';
 import TodoContext from '../context/TodoContext';
 
 const Todos = () => {
@@ -71,12 +72,18 @@ const Todos = () => {
               >
                 {todo.text}
               </p>
-              <div>
+              <div class='sm:hidden'>
                 <button
                   onClick={() => deleteTodo(todo.id)}
                   className='text-xs text-gray-400 dark:text-gray-600 hover:text-blue-500 dark:hover:text-blue-500'
                 >
-                  Delete
+                  <Cross
+                    class={`w-3 h-3 stroke-current hover:text-blue-500 dark:hover:text-blue-500 stroke-1 ${
+                      todo.completed
+                        ? 'text-gray-200 dark:text-gray-500'
+                        : 'text-gray-500 dark:text-gray-300'
+                    }`}
+                  />
                 </button>
               </div>
             </div>
