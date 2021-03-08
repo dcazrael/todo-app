@@ -23,8 +23,14 @@ const Todos = () => {
       element.addEventListener('dragstart', () => {
         element.dataset.dragging = true;
       });
+      element.addEventListener('touchstart', () => {
+        element.dataset.dragging = true;
+      });
 
       element.addEventListener('dragend', () => {
+        element.dataset.dragging = false;
+      });
+      element.addEventListener('touchend', () => {
         element.dataset.dragging = false;
       });
     });
@@ -34,6 +40,13 @@ const Todos = () => {
     if (container !== undefined) {
       const notDragging = '[data-draggable]:not([data-dragging=true]';
       container.addEventListener('dragstart', () => {
+        const draggedOverElements = container.querySelectorAll(notDragging);
+
+        draggedOverElements.forEach((element) => {
+          element.classList.add('opacity-30');
+        });
+      });
+      container.addEventListener('touchstart', () => {
         const draggedOverElements = container.querySelectorAll(notDragging);
 
         draggedOverElements.forEach((element) => {
@@ -60,6 +73,20 @@ const Todos = () => {
           )
         );
       });
+
+      container.addEventListener('touchend', () => {
+        const draggedOverElements = container.querySelectorAll(notDragging);
+
+        draggedOverElements.forEach((element) => {
+          element.classList.remove('opacity-30');
+        });
+
+        setOrder(() =>
+          [...document.querySelectorAll('[data-draggable]')].map((element) =>
+            parseInt(element.dataset.draggable)
+          )
+        );
+      });
     }
   }, [container]);
 
@@ -69,6 +96,20 @@ const Todos = () => {
         e.preventDefault();
 
         const afterElement = getDragAfterElement(container, e.clientY);
+        const draggable = document.querySelector('[data-dragging=true]');
+        if (afterElement === null) {
+          container.appendChild(draggable);
+        } else {
+          container.insertBefore(draggable, afterElement);
+        }
+      });
+      container.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+
+        const afterElement = getDragAfterElement(
+          container,
+          e.touches[0].clientY
+        );
         const draggable = document.querySelector('[data-dragging=true]');
         if (afterElement === null) {
           container.appendChild(draggable);
