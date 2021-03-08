@@ -56,6 +56,7 @@ const TodoList = () => {
             type='text'
             name='new_task'
             id='new_task'
+            aria-label='Create new todo'
             placeholder='Create a new todo...'
             className='flex-grow p-2 mt-0 ml-2 text-gray-400 bg-transparent border-0 appearance-none no-autofill-bg focus:dark:text-gray-100 focus:outline-none focus:ring focus:ring-opacity-30'
           />
