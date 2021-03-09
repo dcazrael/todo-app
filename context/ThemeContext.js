@@ -1,32 +1,26 @@
 import React, { createContext, useEffect, useState } from 'react';
 const defaultState = {
-  dark: true,
+  dark: false,
   toggleDark: () => {},
 };
 const ThemeContext = createContext(defaultState);
 
 const ThemeProvider = ({ children }) => {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState();
 
   useEffect(() => {
     const lsDark = localStorage.getItem('dark');
 
-    if (lsDark !== null) {
-      setDark(JSON.parse(lsDark));
-    }
+    setDark(JSON.parse(lsDark));
   }, []);
 
   const toggleDark = () => {
     const d = document.documentElement;
-
     const themes = ['light', 'dark'];
 
-    if (dark) {
-      d.classList.remove(...themes);
-      d.classList.add('light');
-    } else {
-      d.setAttribute('class', 'dark');
-    }
+    d.classList.remove(...themes);
+    d.classList.add(dark ? 'light' : 'dark');
+
     localStorage.setItem('dark', JSON.stringify(!dark));
     setDark(!dark);
   };

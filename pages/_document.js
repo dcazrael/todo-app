@@ -23,33 +23,22 @@ class MyDocument extends Document {
               __html: `
                 (function() {
                   const storageKey = 'dark';
-                  const classNameDark = 'dark';
-                  const classNameLight = 'light';
+                  const [dark, light] = ['dark', 'light'];
 
                   let d = document.querySelector('html');
+                  let localStorageTheme = JSON.parse(localStorage.getItem(storageKey));
                   
-                  function setClassOnDocumentBody(dark) {
-                    d.classList.add(dark ? classNameDark : classNameLight);
-                    d.classList.remove(dark ? classNameLight : classNameDark);
+                  if (localStorageTheme === null) {
+                    const prefersDarkMode = matchMedia('(prefers-color-scheme: dark)').matches
+                    localStorage.setItem(storageKey, JSON.stringify(prefersDarkMode))
+                    localStorageTheme = prefersDarkMode
                   }
                   
-                  let localStorageTheme = null;
+                  setClassOnDocumentBody(localStorageTheme);
                   
-                  try {
-                    localStorageTheme = localStorage.getItem(storageKey);
-                  } catch (err) {}
-                  
-                  const localStorageExists = localStorageTheme !== null;
-                  
-                  if (localStorageExists) {
-                    localStorageTheme = JSON.parse(localStorageTheme);
-                  }
-                  
-                  if (localStorageExists) {
-                    setClassOnDocumentBody(localStorageTheme);
-                  } else {
-                    let isDarkMode = d.classList.contains(classNameDark);
-                    localStorage.setItem(storageKey, JSON.stringify(isDarkMode));
+                  function setClassOnDocumentBody(darkMode) {
+                    d.classList.remove(darkMode ? light : dark);
+                    d.classList.add(darkMode ? dark : light);
                   }
                 })();
               `,
