@@ -184,7 +184,7 @@ const Todos = () => {
               <div
                 data-draggable={todo.id}
                 data-dragging={false}
-                className='flex items-center px-6 py-4 border-b border-gray-200 cursor-move dark:border-blue-600'
+                className='flex items-center px-6 py-4 text-xl border-b border-gray-200 cursor-move md:text-base dark:border-blue-600'
                 key={`todo-${todo.id}`}
                 draggable
               >
@@ -200,7 +200,7 @@ const Todos = () => {
                   <label
                     htmlFor='{`todo-${todo.id}`}'
                     onClick={() => toggleTodoCompleted(todo.id)}
-                    className='flex items-center justify-center w-5 h-5 text-gray-100 border border-gray-300 rounded-full cursor-pointer stroke-current stroke-2 dark:border-gray-600 fill-transparent bg-gradient-to-br from-blue-400 to-purple-300'
+                    className='flex items-center justify-center w-8 h-8 text-gray-100 border border-gray-300 rounded-full cursor-pointer stroke-current stroke-2 md:w-5 md:h-5 dark:border-gray-600 fill-transparent bg-gradient-to-br from-blue-400 to-purple-300'
                   >
                     <Check className='w-3 h-3' />
                   </label>
@@ -208,7 +208,7 @@ const Todos = () => {
                   <label
                     htmlFor='{`todo-${todo.id}`}'
                     onClick={() => toggleTodoCompleted(todo.id)}
-                    className='w-5 h-5 p-1 border border-gray-300 rounded-full cursor-pointer dark:border-gray-600'
+                    className='w-8 h-8 p-1 border border-gray-300 rounded-full cursor-pointer md:w-5 md:h-5 dark:border-gray-600'
                   />
                 )}
                 <p
@@ -238,7 +238,7 @@ const Todos = () => {
             );
           })}
       </div>
-      <div className='flex items-center justify-between px-6 py-4 text-xs text-gray-400 dark:text-gray-600'>
+      <div className='flex items-center justify-between px-6 py-4 text-sm text-gray-400 md:text-xs dark:text-gray-600'>
         <div className='flex-auto'>
           <p>{todos.filter((todo) => !todo.completed).length} items left</p>
         </div>

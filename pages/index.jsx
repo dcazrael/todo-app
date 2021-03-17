@@ -8,6 +8,7 @@ export default function Home() {
       <Head>
         <title>Todo App with Next and TailwindCSS</title>
         <link rel='icon' href='/favicon.png' />
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <header className='px-12 bg-cover w-min md:w-screen'>
         <div className='container pt-20 mx-auto w-100 pb-14'>
